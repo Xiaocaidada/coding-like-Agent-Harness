@@ -1,9 +1,0 @@
-{
-  "id": "task_0ac029b7",
-  "subject": "\u91cd\u6784\u540e\u7aef\u914d\u7f6e\u6a21\u5757",
-  "description": "\u4ece v13_coder.py \u63d0\u53d6\u914d\u7f6e\u52a0\u8f7d\u903b\u8f91\u5230 config \u6a21\u5757\uff1aload_dotenv(override=True)\u3001ANTHROPIC_BASE_URL/AUTH_TOKEN \u73af\u5883\u53d8\u91cf\u5904\u7406\u3001MODEL\u3001WORKDIR/SKILL_DIR/TRANSCRIPT_DIR/TOOL_RESULT_DIR \u7b49\u8def\u5f84\u5e38\u91cf\u3002\u4fdd\u6301\u73b0\u6709\u63a5\u53e3\uff1av13_coder.py \u4e2d\u7684\u540d\u79f0\uff08client\u3001MODEL\u3001WORKDIR \u7b49\uff09\u7ee7\u7eed\u53ef\u7528\uff0c\u5176\u4ed6\u6a21\u5757\u884c\u4e3a\u4e0d\u53d8\u3002",
-  "status": "in_progress",
-  "owner": "config-dev",
-  "blockedBy": [],
-  "worktree": null
-}
