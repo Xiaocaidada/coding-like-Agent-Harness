@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.craftmarket.mapper.VisitorStatisticsMapper">
+
+    <resultMap id="BaseResultMap" type="com.craftmarket.entity.VisitorStatistics">
+        <id column="id" property="id" />
+        <result column="activity_id" property="activityId" />
+        <result column="statistics_date" property="statisticsDate" />
+        <result column="visitor_count" property="visitorCount" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <select id="selectByActivityIdAndDate" resultMap="BaseResultMap">
+        SELECT * FROM visitor_statistics 
+        WHERE activity_id = #{activityId} AND statistics_date = #{statisticsDate}
+    </select>
+
+    <select id="selectByActivityId" resultMap="BaseResultMap">
+        SELECT * FROM visitor_statistics 
+        WHERE activity_id = #{activityId} 
+        ORDER BY statistics_date DESC
+    </select>
+
+    <select id="selectByActivityIdAndDateRange" resultMap="BaseResultMap">
+        SELECT * FROM visitor_statistics 
+        WHERE activity_id = #{activityId} 
+        AND statistics_date BETWEEN #{startDate} AND #{endDate}
+        ORDER BY statistics_date ASC
+    </select>
+
+    <insert id="batchInsertStatistics">
+        INSERT INTO visitor_statistics (activity_id, statistics_date, visitor_count, create_time)
+        VALUES 
+        <foreach collection="dateList" item="date" separator=",">
+            (#{activityId}, #{date}, #{visitorCount}, NOW())
+        </foreach>
+    </insert>
+
+</mapper>

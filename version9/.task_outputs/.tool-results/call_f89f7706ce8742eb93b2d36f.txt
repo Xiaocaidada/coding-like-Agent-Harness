@@ -1,0 +1,64 @@
+package com.craftmarket.controller;
+
+import com.craftmarket.entity.MarketEvent;
+import com.craftmarket.service.MarketEventService;
+import com.craftmarket.utils.Result;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/market-events")
+@CrossOrigin(origins = "*")
+public class MarketEventController {
+
+    @Autowired
+    private MarketEventService marketEventService;
+
+    @PostMapping
+    public Result<?> createMarketEvent(@RequestBody MarketEvent marketEvent) {
+        return marketEventService.createMarketEvent(marketEvent);
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> getMarketEventById(@PathVariable Long id) {
+        return Result.success(marketEventService.getMarketEventById(id));
+    }
+
+    @PutMapping("/{id}")
+    public Result<?> updateMarketEvent(@PathVariable Long id, @RequestBody MarketEvent marketEvent) {
+        marketEvent.setId(id);
+        return marketEventService.updateMarketEvent(marketEvent);
+    }
+
+    @GetMapping
+    public Result<?> getAllMarketEvents(@RequestParam(defaultValue = "1") int page,
+                                      @RequestParam(defaultValue = "10") int size) {
+        Page<MarketEvent> events = marketEventService.getAllMarketEvents(page, size);
+        return Result.success(events);
+    }
+
+    @GetMapping("/active")
+    public Result<?> getActiveMarketEvents(@RequestParam(defaultValue = "1") int page,
+                                          @RequestParam(defaultValue = "10") int size) {
+        Page<MarketEvent> events = marketEventService.getActiveMarketEvents(page, size);
+        return Result.success(events);
+    }
+
+    @GetMapping("/upcoming")
+    public Result<?> getUpcomingMarketEvents(@RequestParam(defaultValue = "1") int page,
+                                           @RequestParam(defaultValue = "10") int size) {
+        Page<MarketEvent> events = marketEventService.getUpcomingMarketEvents(page, size);
+        return Result.success(events);
+    }
+
+    @PutMapping("/{id}/publish")
+    public Result<?> publishMarketEvent(@PathVariable Long id) {
+        return marketEventService.publishMarketEvent(id);
+    }
+
+    @PutMapping("/{id}/cancel")
+    public Result<?> cancelMarketEvent(@PathVariable Long id) {
+        return marketEventService.cancelMarketEvent(id);
+    }
+}

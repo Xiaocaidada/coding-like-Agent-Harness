@@ -1,0 +1,1 @@
+Wrote 736 bytes to ./my_project/src/main/java/com/craftmarket/vo/VendorApplicationVO.java

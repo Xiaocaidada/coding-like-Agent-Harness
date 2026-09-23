@@ -1,0 +1,1 @@
+Wrote 477 bytes to ./my_project/src/main/java/com/craftmarket/vo/VisitorStatisticsVO.java

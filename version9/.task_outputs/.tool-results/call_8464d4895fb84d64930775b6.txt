@@ -1,0 +1,1 @@
+Wrote 1628 bytes to ./my_project/src/main/resources/mapper/VisitorStatisticsMapper.xml

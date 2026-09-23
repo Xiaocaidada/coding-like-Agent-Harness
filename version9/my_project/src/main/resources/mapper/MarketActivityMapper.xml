@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.craftmarket.mapper.MarketActivityMapper">
+
+    <!-- 根据状态查询活动列表 -->
+    <select id="selectActivitiesByStatus" resultType="com.craftmarket.entity.MarketActivity">
+        SELECT * FROM market_activity
+        WHERE status = #{status} AND deleted = 0
+        ORDER BY start_time DESC
+    </select>
+
+    <!-- 查询即将开始的活动 -->
+    <select id="selectUpcomingActivities" resultType="com.craftmarket.entity.MarketActivity">
+        SELECT * FROM market_activity
+        WHERE status = 'NOT_STARTED' 
+        AND start_time > NOW()
+        AND deleted = 0
+        ORDER BY start_time ASC
+        LIMIT #{limit}
+    </select>
+
+    <!-- 查询活动详情（包含摊位数量统计） -->
+    <select id="selectActivityDetail" resultType="com.craftmarket.entity.MarketActivity">
+        SELECT 
+            ma.*,
+            (SELECT COUNT(*) FROM booth b WHERE b.event_id = ma.id AND b.deleted = 0) AS booth_count,
+            (SELECT COUNT(*) FROM vendor_application va WHERE va.event_id = ma.id AND va.status = 'PENDING' AND va.deleted = 0) AS pending_applications_count
+        FROM market_activity ma
+        WHERE ma.id = #{id} AND ma.deleted = 0
+    </select>
+
+</mapper>

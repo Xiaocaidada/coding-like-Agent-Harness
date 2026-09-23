@@ -1,0 +1,32 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_437468a02efd45ddbcd1696e.txt
+Preview: package com.craftmarket.controller;
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.craftmarket.entity.Application;
+import com.craftmarket.service.ApplicationService;
+import com.craftmarket.utils.Result;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * 报名申请控制器
+ */
+@RestController
+@RequestMapping("/api/applications")
+@Tag(name = "报名申请管理", description = "市集活动报名申请的增删改查接口")
+public class ApplicationController {
+
+    @Autowired
+    private ApplicationService applicationService;
+
+    @PostMapping
+    @Operation(summary = "提交报名申请", description = "摊主向市集活动提交报名申请")
+    @PreAuthorize("hasRole('VENDOR')")
+    public Result<Boolean> submitApplication(@Valid @Req
+</persisted-output>

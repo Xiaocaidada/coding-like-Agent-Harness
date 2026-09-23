@@ -1,0 +1,31 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_ce0e738469a440f69caa7eb2.txt
+Preview: package com.craftmarket.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.craftmarket.entity.SysUser;
+import com.craftmarket.mapper.SysUserMapper;
+import com.craftmarket.service.SysUserService;
+import com.craftmarket.utils.JwtUtil;
+import com.craftmarket.vo.JwtResponse;
+import com.craftmarket.vo.UserVO;
+import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+
+/**
+ * 系统用户服务实现类
+ */
+@Service
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
+
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
+
+    public SysUserServiceImpl(PasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
+        this.passwor
+</persisted-output>

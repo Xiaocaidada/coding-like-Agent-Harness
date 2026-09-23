@@ -1,0 +1,38 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_939920b6cfbd48f89b9f7d7c.txt
+Preview: package com.craftmarket.controller;
+
+import com.craftmarket.entity.Booth;
+import com.craftmarket.service.BoothService;
+import com.craftmarket.utils.Result;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/booths")
+@CrossOrigin(origins = "*")
+public class BoothController {
+
+    @Autowired
+    private BoothService boothService;
+
+    @PostMapping
+    public Result<?> createBooth(@RequestBody Booth booth) {
+        return boothService.createBooth(booth);
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> getBoothById(@PathVariable Long id) {
+        return Result.success(boothService.getBoothById(id));
+    }
+
+    @PutMapping("/{id}")
+    public Result<?> updateBooth(@PathVariable Long id, @RequestBody Booth booth) {
+        booth.setId(id);
+        return boothService.updateBooth(booth);
+    }
+
+    @GetMapping
+    public
+</persisted-output>

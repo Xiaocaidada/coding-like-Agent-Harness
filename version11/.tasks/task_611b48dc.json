@@ -1,0 +1,8 @@
+{
+  "id": "task_611b48dc",
+  "subject": "Fix pip list execution issue",
+  "description": "Diagnose and resolve the 'type' object is not iterable error when running pip list",
+  "status": "pending",
+  "owner": null,
+  "blockedBy": []
+}

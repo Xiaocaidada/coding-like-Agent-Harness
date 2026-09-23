@@ -1,0 +1,108 @@
+-- 本地文创市集摊位管理系统数据库表结构
+
+-- 活动表
+CREATE TABLE `market_event` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '活动ID',
+    `event_name` VARCHAR(100) NOT NULL COMMENT '活动名称',
+    `event_start_time` DATETIME NOT NULL COMMENT '活动开始时间',
+    `event_end_time` DATETIME NOT NULL COMMENT '活动结束时间',
+    `location` VARCHAR(200) NOT NULL COMMENT '活动地点',
+    `description` TEXT COMMENT '活动简介',
+    `poster` VARCHAR(500) COMMENT '海报图片路径',
+    `status` ENUM('NOT_STARTED', 'IN_PROGRESS', 'ENDED') NOT NULL DEFAULT 'NOT_STARTED' COMMENT '活动状态',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) COMMENT '市集活动表';
+
+-- 摊位表
+CREATE TABLE `booth` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '摊位ID',
+    `booth_number` VARCHAR(20) NOT NULL COMMENT '摊位编号',
+    `area` VARCHAR(50) NOT NULL COMMENT '所在区域',
+    `area_size` DECIMAL(10,2) COMMENT '摊位面积(平方米)',
+    `rent_price` DECIMAL(10,2) NOT NULL COMMENT '租金价格',
+    `status` ENUM('AVAILABLE', 'ASSIGNED', 'DISABLED') NOT NULL DEFAULT 'AVAILABLE' COMMENT '摊位状态',
+    `market_event_id` BIGINT NOT NULL COMMENT '所属活动ID',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    INDEX `idx_market_event_id` (`market_event_id`),
+    FOREIGN KEY (`market_event_id`) REFERENCES `market_event` (`id`)
+) COMMENT '摊位表';
+
+-- 摊主表
+CREATE TABLE `vendor` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '摊主ID',
+    `name` VARCHAR(50) NOT NULL COMMENT '摊主姓名',
+    `phone` VARCHAR(20) NOT NULL COMMENT '联系电话',
+    `business_type` VARCHAR(100) COMMENT '经营品类',
+    `description` TEXT COMMENT '个人简介',
+    `status` TINYINT DEFAULT 1 COMMENT '状态(1:正常,0:禁用)',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    UNIQUE KEY `uk_phone` (`phone`)
+) COMMENT '摊主表';
+
+-- 报名表
+CREATE TABLE `application` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '报名ID',
+    `vendor_id` BIGINT NOT NULL COMMENT '摊主ID',
+    `market_event_id` BIGINT NOT NULL COMMENT '活动ID',
+    `expected_area` VARCHAR(50) COMMENT '期望摊位区域',
+    `status` ENUM('PENDING', 'APPROVED', 'REJECTED') NOT NULL DEFAULT 'PENDING' COMMENT '审核状态',
+    `reject_reason` TEXT COMMENT '驳回原因',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    INDEX `idx_vendor_event` (`vendor_id`, `market_event_id`),
+    FOREIGN KEY (`vendor_id`) REFERENCES `vendor` (`id`),
+    FOREIGN KEY (`market_event_id`) REFERENCES `market_event` (`id`)
+) COMMENT '摊主报名表';
+
+-- 订单表
+CREATE TABLE `order_` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '订单ID',
+    `vendor_id` BIGINT NOT NULL COMMENT '摊主ID',
+    `market_event_id` BIGINT NOT NULL COMMENT '活动ID',
+    `booth_id` BIGINT NOT NULL COMMENT '摊位ID',
+    `amount` DECIMAL(10,2) NOT NULL COMMENT '订单金额',
+    `status` ENUM('PENDING_PAYMENT', 'PAID', 'CANCELLED') NOT NULL DEFAULT 'PENDING_PAYMENT' COMMENT '订单状态',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    INDEX `idx_vendor_event` (`vendor_id`, `market_event_id`),
+    FOREIGN KEY (`vendor_id`) REFERENCES `vendor` (`id`),
+    FOREIGN KEY (`market_event_id`) REFERENCES `market_event` (`id`),
+    FOREIGN KEY (`booth_id`) REFERENCES `booth` (`id`)
+) COMMENT '摊位租赁订单表';
+
+-- 客流统计表
+CREATE TABLE `visitor_statistics` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '统计ID',
+    `market_event_id` BIGINT NOT NULL COMMENT '活动ID',
+    `statistics_date` DATE NOT NULL COMMENT '统计日期',
+    `visitor_count` INT NOT NULL COMMENT '到访人数',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    UNIQUE KEY `uk_event_date` (`market_event_id`, `statistics_date`),
+    FOREIGN KEY (`market_event_id`) REFERENCES `market_event` (`id`)
+) COMMENT '客流统计表';
+
+-- 用户表
+CREATE TABLE `user` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '用户ID',
+    `username` VARCHAR(50) NOT NULL COMMENT '用户名',
+    `password` VARCHAR(255) NOT NULL COMMENT '密码',
+    `role` ENUM('ADMIN', 'VENDOR') NOT NULL COMMENT '用户角色',
+    `vendor_id` BIGINT COMMENT '摊主ID(仅摊主角色有效)',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    UNIQUE KEY `uk_username` (`username`),
+    FOREIGN KEY (`vendor_id`) REFERENCES `vendor` (`id`)
+) COMMENT '用户表';
+
+-- 添加外键约束以确保数据完整性
+ALTER TABLE `application` ADD CONSTRAINT `fk_application_vendor` FOREIGN KEY (`vendor_id`) REFERENCES `vendor` (`id`);
+ALTER TABLE `application` ADD CONSTRAINT `fk_application_event` FOREIGN KEY (`market_event_id`) REFERENCES `market_event` (`id`);
+ALTER TABLE `order_` ADD CONSTRAINT `fk_order_vendor` FOREIGN KEY (`vendor_id`) REFERENCES `vendor` (`id`);
+ALTER TABLE `order_` ADD CONSTRAINT `fk_order_event` FOREIGN KEY (`market_event_id`) REFERENCES `market_event` (`id`);
+ALTER TABLE `order_` ADD CONSTRAINT `fk_order_booth` FOREIGN KEY (`booth_id`) REFERENCES `booth` (`id`);
+ALTER TABLE `visitor_statistics` ADD CONSTRAINT `fk_visitor_event` FOREIGN KEY (`market_event_id`) REFERENCES `market_event` (`id`);
+ALTER TABLE `user` ADD CONSTRAINT `fk_user_vendor` FOREIGN KEY (`vendor_id`) REFERENCES `vendor` (`id`);

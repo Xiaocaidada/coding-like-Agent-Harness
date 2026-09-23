@@ -1,0 +1,1 @@
+Wrote 831 bytes to ./my_project/src/main/java/com/craftmarket/mapper/SysUserMapper.java

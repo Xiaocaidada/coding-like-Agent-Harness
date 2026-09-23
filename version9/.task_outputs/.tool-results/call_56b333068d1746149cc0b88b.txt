@@ -1,0 +1,1 @@
+Wrote 2405 bytes to ./my_project/src/main/java/com/craftmarket/config/SecurityConfig.java

@@ -1,0 +1,1 @@
+Wrote 22541 bytes to ./craft-market-frontend/src/views/BoothsView.vue

@@ -1,0 +1,32 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_e5aa756dd3524b83ba63f91c.txt
+Preview: package com.craftmarket.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.craftmarket.entity.MarketActivity;
+import com.craftmarket.mapper.MarketActivityMapper;
+import com.craftmarket.service.MarketActivityService;
+import com.craftmarket.vo.ActivityVO;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * 市集活动服务实现类
+ */
+@Service
+public class MarketActivityServiceImpl extends ServiceImpl<MarketActivityMapper, MarketActivity> implements MarketActivityService {
+
+    @Override
+    @Transactional
+    public ActivityVO createActivity(MarketActivity activity) {
+        // 设置默认值
+        activity.setStatus("DRAFT"); // 默认为草稿状态
+        activity.setCreateTime(LocalDateTime.now());
+        
+</persisted-output>

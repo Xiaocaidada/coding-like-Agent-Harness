@@ -1,0 +1,1 @@
+Wrote 1042 bytes to my_project/src/main/java/com/craftmarket/service/MarketEventService.java

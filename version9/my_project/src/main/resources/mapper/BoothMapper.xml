@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.craftmarket.mapper.BoothMapper">
+
+    <resultMap id="BaseResultMap" type="com.craftmarket.entity.Booth">
+        <id column="id" property="id" />
+        <result column="booth_number" property="boothNumber" />
+        <result column="area" property="area" />
+        <result column="area_name" property="areaName" />
+        <result column="area_size" property="areaSize" />
+        <result column="rent_price" property="rentPrice" />
+        <result column="status" property="status" />
+        <result column="activity_id" property="activityId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="selectByActivityId" resultMap="BaseResultMap">
+        SELECT * FROM booth WHERE activity_id = #{activityId} 
+        ORDER BY area, booth_number ASC
+    </select>
+
+    <select id="selectByActivityIdAndStatus" resultMap="BaseResultMap">
+        SELECT * FROM booth 
+        WHERE activity_id = #{activityId} AND status = #{status}
+        ORDER BY area, booth_number ASC
+    </select>
+
+    <select id="selectByActivityIdAndArea" resultMap="BaseResultMap">
+        SELECT * FROM booth 
+        WHERE activity_id = #{activityId} AND area = #{area}
+        ORDER BY booth_number ASC
+    </select>
+
+    <update id="updateStatus">
+        UPDATE booth SET status = #{status}, update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+</mapper>

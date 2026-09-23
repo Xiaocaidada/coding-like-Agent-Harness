@@ -1,0 +1,8 @@
+{
+  "id": "task_1c40fe0c",
+  "subject": "Check system Python installation",
+  "description": "Verify if system Python is properly installed and working",
+  "status": "pending",
+  "owner": null,
+  "blockedBy": []
+}

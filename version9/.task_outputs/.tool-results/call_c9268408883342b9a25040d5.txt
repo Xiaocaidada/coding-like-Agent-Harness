@@ -1,0 +1,1 @@
+Wrote 292 bytes to craft-market-frontend/vite.config.js

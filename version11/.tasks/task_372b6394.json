@@ -1,0 +1,8 @@
+{
+  "id": "task_372b6394",
+  "subject": "Diagnose Python environment corruption",
+  "description": "Investigate why all Python commands are failing with 'type' object is not iterable error",
+  "status": "pending",
+  "owner": null,
+  "blockedBy": []
+}

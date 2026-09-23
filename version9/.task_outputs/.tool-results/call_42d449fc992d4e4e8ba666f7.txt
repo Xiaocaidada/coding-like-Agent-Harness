@@ -1,0 +1,17 @@
+[x] 创建完整的实体类(Entity)
+[x] 创建数据传输对象(DTO)
+[x] 创建值对象(VO)
+[x] 创建枚举类
+[x] 创建Mapper接口和XML映射文件
+[>] 完成Service接口和实现类
+[ ] 创建Controller类
+[ ] 创建全局异常处理器和统一返回结果
+[ ] 创建JWT工具类和配置
+[ ] 创建全局配置类
+[ ] 创建单元测试
+[ ] 创建项目README文档
+[ ] 创建数据库建表SQL脚本
+[ ] 创建application.yml配置文件
+[ ] 创建pom.xml文件
+
+5/15 completed

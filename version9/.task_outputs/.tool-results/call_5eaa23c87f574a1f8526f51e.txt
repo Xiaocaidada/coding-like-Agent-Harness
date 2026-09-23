@@ -1,0 +1,17 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_5eaa23c87f574a1f8526f51e.txt
+Preview: my_project\src\main\java\com\craftmarket\config\CraftMarketConfig.java
+my_project\src\main\java\com\craftmarket\config\GlobalExceptionHandler.java
+my_project\src\main\java\com\craftmarket\config\SecurityConfig.java
+my_project\src\main\java\com\craftmarket\controller\ApplicationController.java
+my_project\src\main\java\com\craftmarket\controller\AuthController.java
+my_project\src\main\java\com\craftmarket\controller\BoothController.java
+my_project\src\main\java\com\craftmarket\controller\CraftMarketApplication.java
+my_project\src\main\java\com\craftmarket\controller\MarketActivityController.java
+my_project\src\main\java\com\craftmarket\controller\MarketEventController.java
+my_project\src\main\java\com\craftmarket\controller\OrderController.java
+my_project\src\main\java\com\craftmarket\controller\UserController.java
+my_project\src\main\java\com\craftmarket\controller\VendorController.java
+my_project\src\main\java\com\craftmarket\controller\VisitorStatisticsController.java
+my_project\src\m
+</persisted-output>

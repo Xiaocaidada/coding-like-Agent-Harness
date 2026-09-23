@@ -1,0 +1,24 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_b4f4b7b590f64f43b49e48f1.txt
+Preview: ./my_project\PROJECT_STRUCTURE.md
+./my_project\README.md
+./my_project\pom.xml
+./my_project\sql
+./my_project\sql\create_tables.sql
+./my_project\sql\init.sql
+./my_project\src
+./my_project\src\main
+./my_project\src\main\java
+./my_project\src\main\java\com
+./my_project\src\main\java\com\craftmarket
+./my_project\src\main\java\com\craftmarket\controller
+./my_project\src\main\java\com\craftmarket\controller\ApplicationController.java
+./my_project\src\main\java\com\craftmarket\controller\BoothController.java
+./my_project\src\main\java\com\craftmarket\controller\CraftMarketApplication.java
+./my_project\src\main\java\com\craftmarket\controller\MarketEventController.java
+./my_project\src\main\java\com\craftmarket\controller\OrderController.java
+./my_project\src\main\java\com\craftmarket\controller\UserController.java
+./my_project\src\main\java\com\craftmarket\controller\VendorController.java
+./my_project\src\main\java\com\craftmarket\controller\VisitorStatisticsController.java
+./my_project\src\ma
+</persisted-output>

@@ -1,0 +1,1 @@
+Wrote 4056 bytes to ./my_project/src/main/java/com/craftmarket/service/impl/ApplicationServiceImpl.java

@@ -1,0 +1,1 @@
+Wrote 2401 bytes to my_project/src/main/java/com/craftmarket/dto/ApplicationDTO.java

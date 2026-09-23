@@ -1,0 +1,50 @@
+package com.craftmarket.controller;
+
+import com.craftmarket.entity.Vendor;
+import com.craftmarket.service.VendorService;
+import com.craftmarket.utils.Result;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/vendors")
+@CrossOrigin(origins = "*")
+public class VendorController {
+
+    @Autowired
+    private VendorService vendorService;
+
+    @PostMapping
+    public Result<?> createVendor(@RequestBody Vendor vendor) {
+        return vendorService.createVendor(vendor);
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> getVendorById(@PathVariable Long id) {
+        return Result.success(vendorService.getVendorById(id));
+    }
+
+    @PutMapping("/{id}")
+    public Result<?> updateVendor(@PathVariable Long id, @RequestBody Vendor vendor) {
+        vendor.setId(id);
+        return vendorService.updateVendor(vendor);
+    }
+
+    @GetMapping
+    public Result<?> getAllVendors(@RequestParam(defaultValue = "1") int page,
+                                 @RequestParam(defaultValue = "10") int size) {
+        Page<Vendor> vendors = vendorService.getAllVendors(page, size);
+        return Result.success(vendors);
+    }
+
+    @DeleteMapping("/{id}")
+    public Result<?> deleteVendor(@PathVariable Long id) {
+        return vendorService.deleteVendor(id);
+    }
+
+    @GetMapping("/user/{userId}")
+    public Result<?> getVendorByUserId(@PathVariable Long userId) {
+        return Result.success(vendorService.getVendorByUserId(userId));
+    }
+}

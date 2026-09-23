@@ -1,0 +1,10 @@
+{
+  "id": "task_d9f93b91",
+  "subject": "write docs",
+  "description": "Create documentation for the database schema and API usage",
+  "status": "pending",
+  "owner": null,
+  "blockedBy": [
+    "task_12dab55b"
+  ]
+}

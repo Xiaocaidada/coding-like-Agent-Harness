@@ -1,0 +1,77 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: craft-market-booth
+  
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/craft_market_booth?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+  
+  # Jackson配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  
+  # 模板引擎配置（虽然不需要前端，但保留以备不时之需）
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML
+
+# MyBatis Plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: null
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/*.xml
+
+# JWT配置
+jwt:
+  secret: ${JWT_SECRET:craft_market_booth_secret_key_2024}
+  expiration: 86400000 # 24小时
+
+# 日志配置
+logging:
+  level:
+    com.craftmarket: debug
+    org.springframework.security: debug
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/craft-market-booth.log
+    max-size: 10MB
+    max-history: 30
+
+# 业务配置
+business:
+  # 分页配置
+  page:
+    default-size: 10
+    max-size: 100
+  
+  # 文件上传配置
+  upload:
+    path: ${UPLOAD_PATH:./uploads}
+    allowed-types: image/jpeg,image/png,image/gif,image/webp

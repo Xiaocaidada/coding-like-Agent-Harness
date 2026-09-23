@@ -1,0 +1,33 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_0766de6c7f8142c3a587b09a.txt
+Preview: package com.craftmarket.controller;
+
+import com.craftmarket.entity.User;
+import com.craftmarket.service.AuthService;
+import com.craftmarket.utils.Result;
+import com.craftmarket.vo.JwtResponse;
+import com.craftmarket.vo.UserVO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * 认证控制器
+ */
+@RestController
+@RequestMapping("/api/auth")
+@Tag(name = "认证管理", description = "用户登录、注册、token管理接口")
+public class AuthController {
+
+    @Autowired
+    private AuthService authService;
+
+    @PostMapping("/login")
+    @Operation(summary = "用户登录", description = "根据用户名和密码获取JWT令牌")
+    public Result<JwtResponse> login(@NotBlank @RequestParam String username,
+                                   @NotBlank @RequestParam String password) {
+ 
+</persisted-output>

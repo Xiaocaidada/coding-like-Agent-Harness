@@ -1,0 +1,7 @@
+[x] 读取并分析当前项目结构
+[x] 创建application.yml配置文件
+[x] 验证所有服务方法签名与控制器调用匹配
+[>] 编写单元测试
+[ ] 创建comprehensive README文档
+
+3/5 completed

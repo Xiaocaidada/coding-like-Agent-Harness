@@ -1,0 +1,43 @@
+# Python 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# Python 编译缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+.Python
+
+# 环境变量配置（不要把密钥上传！）
+.env
+.env.local
+.env.*.local
+
+# 日志文件
+*.log
+logs/
+
+# IDE - PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件、缓存
+*.tmp
+*.bak
+.cache/
+

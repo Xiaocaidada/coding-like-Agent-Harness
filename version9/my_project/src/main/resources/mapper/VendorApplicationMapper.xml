@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.craftmarket.mapper.VendorApplicationMapper">
+
+    <resultMap id="BaseResultMap" type="com.craftmarket.entity.VendorApplication">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="activity_id" property="activityId" />
+        <result column="vendor_name" property="vendorName" />
+        <result column="phone" property="phone" />
+        <result column="business_type" property="businessType" />
+        <result column="description" property="description" />
+        <result column="preferred_area" property="preferredArea" />
+        <result column="status" property="status" />
+        <result column="reject_reason" property="rejectReason" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="selectByActivityId" resultMap="BaseResultMap">
+        SELECT * FROM vendor_application 
+        WHERE activity_id = #{activityId} 
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT * FROM vendor_application 
+        WHERE user_id = #{userId} 
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByActivityIdAndStatus" resultMap="BaseResultMap">
+        SELECT * FROM vendor_application 
+        WHERE activity_id = #{activityId} AND status = #{status}
+        ORDER BY create_time DESC
+    </select>
+
+    <update id="updateStatus">
+        UPDATE vendor_application 
+        SET status = #{status}, reject_reason = #{rejectReason}, update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+</mapper>

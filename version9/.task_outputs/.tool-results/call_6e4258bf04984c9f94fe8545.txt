@@ -1,0 +1,1 @@
+Wrote 465 bytes to my_project/src/main/java/com/craftmarket/mapper/VendorMapper.java

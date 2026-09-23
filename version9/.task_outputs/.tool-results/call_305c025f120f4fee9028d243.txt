@@ -1,0 +1,12 @@
+[x] 完善MarketActivityStatus枚举和MarketActivity实体
+[x] 完成Application相关类的修复和实现
+[x] 创建缺失的Mapper XML文件
+[>] 验证和完善MarketActivityService实现
+[ ] 创建MarketActivityController
+[ ] 完成ApplicationController
+[ ] 创建主要的Controller类（MarketEventController, BoothController）
+[ ] 完善DTO和VO类
+[ ] 创建单元测试
+[ ] 创建项目文档和README
+
+3/10 completed

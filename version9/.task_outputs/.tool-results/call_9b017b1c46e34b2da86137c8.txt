@@ -1,0 +1,11 @@
+./my_project/src/main/java/com/craftmarket/mapper\ApplicationMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\BaseMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\BoothMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\MarketActivityMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\MarketEventMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\OrderMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\SysUserMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\UserMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\VendorApplicationMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\VendorMapper.java
+./my_project/src/main/java/com/craftmarket/mapper\VisitorStatisticsMapper.java

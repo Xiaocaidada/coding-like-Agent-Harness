@@ -1,0 +1,32 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_fa94c4b91b4d4d8db3e64048.txt
+Preview: package com.craftmarket.controller;
+
+import com.craftmarket.entity.MarketEvent;
+import com.craftmarket.service.MarketEventService;
+import com.craftmarket.utils.Result;
+import com.craftmarket.enums.MarketEventStatus;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/market-events")
+@CrossOrigin(origins = "*")
+public class MarketEventController {
+
+    @Autowired
+    private MarketEventService marketEventService;
+
+    @PostMapping
+    public Result<?> createMarketEvent(@RequestBody MarketEvent marketEvent) {
+        if (marketEventService.saveMarketEvent(marketEvent)) {
+            return Result.success("活动创建成功");
+        }
+        return Result.error("活动创建失败");
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> getMarketEventById(@PathVariable Long id) {
+        return Result.success(marketEventService.getMarketEventByI
+</persisted-output>

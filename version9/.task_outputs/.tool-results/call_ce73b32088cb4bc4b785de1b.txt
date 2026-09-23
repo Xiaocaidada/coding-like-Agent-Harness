@@ -1,0 +1,30 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_ce73b32088cb4bc4b785de1b.txt
+Preview: package com.craftmarket.service.impl;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.craftmarket.entity.Booth;
+import com.craftmarket.entity.Order;
+import com.craftmarket.entity.Vendor;
+import com.craftmarket.enums.OrderStatus;
+import com.craftmarket.mapper.BoothMapper;
+import com.craftmarket.mapper.OrderMapper;
+import com.craftmarket.mapper.VendorMapper;
+import com.craftmarket.service.BoothService;
+import com.craftmarket.service.OrderService;
+import com.craftmarket.service.VendorService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Service
+@Slf4j
+public class OrderSer
+</persisted-output>

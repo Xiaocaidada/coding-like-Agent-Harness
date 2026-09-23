@@ -1,0 +1,1 @@
+Wrote 14847 bytes to ./craft-market-frontend/src/views/MarketEventsView.vue

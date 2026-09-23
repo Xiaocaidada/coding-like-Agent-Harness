@@ -1,0 +1,6 @@
+./my_project/src/main/resources/mapper\BoothMapper.xml
+./my_project/src/main/resources/mapper\MarketActivityMapper.xml
+./my_project/src/main/resources/mapper\OrderMapper.xml
+./my_project/src/main/resources/mapper\SysUserMapper.xml
+./my_project/src/main/resources/mapper\VendorApplicationMapper.xml
+./my_project/src/main/resources/mapper\VisitorStatisticsMapper.xml

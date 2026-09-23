@@ -1,0 +1,1 @@
+Error: [Errno 13] Permission denied: 'D:\\project\\python_project\\coding-agent-demo\\version9\\my_project'

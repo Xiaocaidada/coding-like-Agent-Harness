@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.craftmarket.mapper.MarketEventMapper">
+
+    <!-- 根据状态查询活动列表 -->
+    <select id="selectEventsByStatus" resultType="com.craftmarket.entity.MarketEvent">
+        SELECT * FROM market_event
+        WHERE status = #{status} AND deleted = 0
+        ORDER BY event_start_time DESC
+    </select>
+
+    <!-- 查询活动中可用摊位（按区域） -->
+    <select id="selectAvailableBoothsByEvent" resultType="com.craftmarket.entity.Booth">
+        SELECT 
+            b.*
+        FROM booth b
+        WHERE b.event_id = #{eventId} 
+        AND b.area = #{area}
+        AND b.status = 'AVAILABLE' 
+        AND b.deleted = 0
+        ORDER BY b.create_time DESC
+    </select>
+
+</mapper>

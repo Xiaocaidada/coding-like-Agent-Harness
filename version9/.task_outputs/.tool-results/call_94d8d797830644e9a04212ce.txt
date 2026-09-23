@@ -1,0 +1,1 @@
+Wrote 9300 bytes to my_project/sql/create_tables.sql

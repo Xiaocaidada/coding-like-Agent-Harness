@@ -1,0 +1,10 @@
+{
+  "id": "task_49dd86bd",
+  "subject": "write tests",
+  "description": "Create comprehensive tests for API endpoints and database functionality",
+  "status": "pending",
+  "owner": null,
+  "blockedBy": [
+    "task_0a468569"
+  ]
+}

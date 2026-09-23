@@ -1,0 +1,1 @@
+Wrote 3518 bytes to craft-market-frontend/src/views/LoginView.vue

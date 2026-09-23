@@ -1,0 +1,8 @@
+{
+  "id": "task_bf5af066",
+  "subject": "setup database schema",
+  "description": "Create the database schema with necessary tables and relationships",
+  "status": "pending",
+  "owner": null,
+  "blockedBy": []
+}

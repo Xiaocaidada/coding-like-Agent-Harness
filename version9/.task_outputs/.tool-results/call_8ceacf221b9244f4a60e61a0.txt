@@ -1,0 +1,1 @@
+Wrote 1491 bytes to craft-market-frontend/src/store/auth.js

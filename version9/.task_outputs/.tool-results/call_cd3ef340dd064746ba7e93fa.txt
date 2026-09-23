@@ -1,0 +1,1 @@
+Wrote 4014 bytes to craft-market-frontend/src/App.vue

@@ -1,0 +1,1 @@
+Wrote 659 bytes to ./my_project/src/main/resources/mapper/VendorMapper.xml

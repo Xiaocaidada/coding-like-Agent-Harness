@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.craftmarket.mapper.OrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.craftmarket.entity.Order">
+        <id column="id" property="id" />
+        <result column="order_no" property="orderNo" />
+        <result column="user_id" property="userId" />
+        <result column="activity_id" property="activityId" />
+        <result column="vendor_application_id" property="vendorApplicationId" />
+        <result column="booth_id" property="boothId" />
+        <result column="amount" property="amount" />
+        <result column="status" property="status" />
+        <result column="payment_time" property="paymentTime" />
+        <result column="cancel_time" property="cancelTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="selectByActivityId" resultMap="BaseResultMap">
+        SELECT * FROM `order` 
+        WHERE activity_id = #{activityId} 
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT * FROM `order` 
+        WHERE user_id = #{userId} 
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByActivityIdAndStatus" resultMap="BaseResultMap">
+        SELECT * FROM `order` 
+        WHERE activity_id = #{activityId} AND status = #{status}
+        ORDER BY create_time DESC
+    </select>
+
+    <update id="updateStatus">
+        UPDATE `order` SET status = #{status}, update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateStatusWithPaymentTime">
+        UPDATE `order` 
+        SET status = #{status}, payment_time = #{paymentTime}, update_time = NOW()
+        WHERE id = #{id}
+    </update>
+
+</mapper>

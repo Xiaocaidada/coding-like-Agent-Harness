@@ -1,0 +1,16 @@
+package com.craftmarket.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.craftmarket.entity.MarketActivity;
+import com.craftmarket.vo.ActivityVO;
+
+import java.util.List;
+
+/**
+ * 市集活动服务接口
+ */
+public interface MarketActivityService extends IService<MarketActivity> {
+
+    /**
+     * 创建活动
+... (54) more lines

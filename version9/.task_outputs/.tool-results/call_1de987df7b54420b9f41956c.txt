@@ -1,0 +1,84 @@
+package com.craftmarket.controller;
+
+import com.craftmarket.entity.Order;
+import com.craftmarket.service.OrderService;
+import com.craftmarket.utils.Result;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/orders")
+@CrossOrigin(origins = "*")
+public class OrderController {
+
+    @Autowired
+    private OrderService orderService;
+
+    @PostMapping
+    public Result<?> createOrder(@RequestBody Order order) {
+        return orderService.createOrder(order);
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> getOrderById(@PathVariable Long id) {
+        return Result.success(orderService.getOrderById(id));
+    }
+
+    @PutMapping("/{id}")
+    public Result<?> updateOrder(@PathVariable Long id, @RequestBody Order order) {
+        order.setId(id);
+        return orderService.updateOrder(order);
+    }
+
+    @GetMapping
+    public Result<?> getAllOrders(@RequestParam(defaultValue = "1") int page,
+                                @RequestParam(defaultValue = "10") int size) {
+        Page<Order> orders = orderService.getAllOrders(page, size);
+        return Result.success(orders);
+    }
+
+    @GetMapping("/vendor/{vendorId}")
+    public Result<?> getOrdersByVendor(@PathVariable Long vendorId,
+                                     @RequestParam(defaultValue = "1") int page,
+                                     @RequestParam(defaultValue = "10") int size) {
+        Page<Order> orders = orderService.getOrdersByVendor(vendorId, page, size);
+        return Result.success(orders);
+    }
+
+    @GetMapping("/customer/{customerId}")
+    public Result<?> getOrdersByCustomer(@PathVariable Long customerId,
+                                       @RequestParam(defaultValue = "1") int page,
+                                       @RequestParam(defaultValue = "10") int size) {
+        Page<Order> orders = orderService.getOrdersByCustomer(customerId, page, size);
+        return Result.success(orders);
+    }
+
+    @GetMapping("/market-event/{marketEventId}")
+    public Result<?> getOrdersByMarketEvent(@PathVariable Long marketEventId,
+                                          @RequestParam(defaultValue = "1") int page,
+                                          @RequestParam(defaultValue = "10") int size) {
+        Page<Order> orders = orderService.getOrdersByMarketEvent(marketEventId, page, size);
+        return Result.success(orders);
+    }
+
+    @PutMapping("/{id}/confirm")
+    public Result<?> confirmOrder(@PathVariable Long id) {
+        return orderService.confirmOrder(id);
+    }
+
+    @PutMapping("/{id}/cancel")
+    public Result<?> cancelOrder(@PathVariable Long id) {
+        return orderService.cancelOrder(id);
+    }
+
+    @PutMapping("/{id}/complete")
+    public Result<?> completeOrder(@PathVariable Long id) {
+        return orderService.completeOrder(id);
+    }
+
+    @GetMapping("/stats/{vendorId}")
+    public Result<?> getOrderStatistics(@PathVariable Long vendorId) {
+        return Result.success(orderService.getOrderStatistics(vendorId));
+    }
+}

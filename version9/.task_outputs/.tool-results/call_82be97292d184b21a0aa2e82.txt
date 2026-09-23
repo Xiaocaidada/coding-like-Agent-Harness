@@ -1,0 +1,31 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_82be97292d184b21a0aa2e82.txt
+Preview: package com.craftmarket.controller;
+
+import com.craftmarket.entity.Order;
+import com.craftmarket.service.OrderService;
+import com.craftmarket.utils.Result;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/orders")
+@CrossOrigin(origins = "*")
+public class OrderController {
+
+    @Autowired
+    private OrderService orderService;
+
+    @PostMapping
+    public Result<?> createOrder(@RequestParam Long vendorId, 
+                               @RequestParam Long marketEventId, 
+                               @RequestParam Long boothId, 
+                               @RequestParam BigDecimal amount) {
+        return Result.success(orderService.createOrder(vendorId, marketEventId, boothId, amount));
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> getOrderById(@PathVariable Long id) {
+        return Result.success(orderServ
+</persisted-output>

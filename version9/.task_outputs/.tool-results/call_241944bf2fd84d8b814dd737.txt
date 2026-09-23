@@ -1,0 +1,33 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_241944bf2fd84d8b814dd737.txt
+Preview: package com.craftmarket.controller;
+
+import com.craftmarket.entity.VisitorStatistics;
+import com.craftmarket.service.VisitorStatisticsService;
+import com.craftmarket.utils.Result;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+
+@RestController
+@RequestMapping("/api/visitor-statistics")
+@CrossOrigin(origins = "*")
+public class VisitorStatisticsController {
+
+    @Autowired
+    private VisitorStatisticsService visitorStatisticsService;
+
+    @PostMapping
+    public Result<?> createVisitorStatistics(@RequestBody VisitorStatistics visitorStatistics) {
+        return visitorStatisticsService.createVisitorStatistics(visitorStatistics);
+    }
+
+    @GetMapping("/{id}")
+    public Result<?> getVisitorStatisticsById(@PathVariable Long id) {
+        return Result.success(visitorStatisticsService.getVisitorStatisticsById(id));
+    }
+
+    @G
+</persisted-output>

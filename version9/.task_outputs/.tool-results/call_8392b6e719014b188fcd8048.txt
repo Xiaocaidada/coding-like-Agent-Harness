@@ -1,0 +1,50 @@
+<persisted-output>
+Full output: D:\project\python_project\coding-agent-demo\version9\.task_outputs\.tool-results\call_8392b6e719014b188fcd8048.txt
+Preview: package com.craftmarket.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.craftmarket.entity.Booth;
+import com.craftmarket.vo.BoothVO;
+
+import java.util.List;
+
+/**
+ * 摊位服务接口
+ */
+public interface BoothService extends IService<Booth> {
+
+    /**
+     * 创建摊位
+     *
+     * @param booth 摊位信息
+     * @return 创建的摊位信息
+     */
+    BoothVO createBooth(Booth booth);
+
+    /**
+     * 批量创建摊位
+     *
+     * @param activityId 活动ID
+     * @param area       区域
+     * @param areaName   区域名称
+     * @param areaSize   面积
+     * @param rentPrice  租金
+     * @param boothCount 摊位数量
+     * @return 创建的摊位数量
+     */
+    int batchCreateBooths(Long activityId, String area, String areaName, 
+                         java.math.BigDecimal areaSize, java.math.BigDecimal rentPrice, 
+                         int boothCount);
+
+    /**
+     * 获取活动下的所有摊位
+     *
+     * @param activityId 活动ID
+     * @return 摊位列表
+     */
+    List<BoothVO> getBoothsByActivity(Long activityId);
+
+    /**
+     * 根据区域获取摊位
+
+</persisted-output>

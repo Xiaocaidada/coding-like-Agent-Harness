@@ -1,0 +1,1 @@
+Error: Unknown skill 'vue3js_web_development'. Available: none

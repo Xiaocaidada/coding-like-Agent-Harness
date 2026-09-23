@@ -1,0 +1,1 @@
+Wrote 6545 bytes to craft-market-frontend/src/views/DashboardView.vue
