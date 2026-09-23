@@ -14,6 +14,9 @@ import sys
 import threading
 import time
 import uuid
+
+from anthropic import Anthropic
+from dotenv import load_dotenv
 from filelock import FileLock
 from dataclasses import dataclass, asdict, field
 from pathlib import Path
@@ -21,7 +24,19 @@ import msvcrt
 import yaml
 import os
 
-from config import client, MODEL, WORKDIR, SKILL_DIR, TRANSCRIPT_DIR, TOOL_RESULT_DIR, DURABLE_PATH
+load_dotenv(override=True)
+if os.getenv("ANTHROPIC_BASE_URL"):
+    os.environ.pop("ANTHROPIC_AUTH_TOKEN", None)
+
+client = Anthropic(base_url=os.getenv("ANTHROPIC_BASE_URL"))
+WORKDIR = Path.cwd()
+SKILL_DIR = WORKDIR / "skills"
+TRANSCRIPT_DIR = WORKDIR / ".transcripts"
+TOOL_RESULT_DIR = WORKDIR / ".task_outputs" / ".tool-results"
+MODEL = os.getenv("MODEL_ID")
+
+#定时任务实现
+DURABLE_PATH=WORKDIR / ".scheduled_tasks.json"
 
 #定时任务实现
 @dataclass
